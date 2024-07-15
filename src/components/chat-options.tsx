@@ -17,12 +17,17 @@ export function ChatOptions(){
         await fetchMessages()
     }
     useEffect(() => {
+        if (window.localStorage.getItem('messages')) {
+            return
+        } else{
         GetMessages()
+        }
     }, []);
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault()
        const data = new FormData(e.target)
        const content : any = data.get('content')
+       e.target.content.value = "" 
        createMessage(content)
        await fetchMessages()
 

@@ -1,5 +1,6 @@
 import { Message } from '@prisma/client'
 import {create} from 'zustand'
+import { persist } from 'zustand/middleware'
 
 interface Mensaje {
     messages: Message[],
@@ -7,7 +8,10 @@ interface Mensaje {
     createMessage: (data: string) => void,
     deleteMessage: (id: number) => void
 }
-export const useMessageStore = create<Mensaje>((set, get) => {
+
+
+
+export const useMessageStore = create<Mensaje>()(persist((set, get) => {
     return {
         messages: [],
         fetchMessages: async () => {
@@ -31,10 +35,12 @@ export const useMessageStore = create<Mensaje>((set, get) => {
             const pet = await fetch(`/api/messages/${id}`, {
                 method: 'DELETE'
             })
-            console.log(await pet.json())
-            // const {messages} = get()
-            // const newMessages = messages.filter(item => item.id !== Number(id))
-            // set({messages: newMessages})
+            const res = await pet.json()
+            const {messages} = get()
+            const newMessages = messages.filter(item => item.id !== Number(res.id))
+            set({messages: newMessages})
         }
     }
-})
+}, {
+    name: "messages"
+}))

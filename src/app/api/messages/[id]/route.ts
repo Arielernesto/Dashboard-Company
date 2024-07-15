@@ -5,7 +5,7 @@ interface Params{
     id: number | string
 }
 
-export async function GET(params: Params) {
+export async function GET(request: Request, {params}: Params) {
   console.log(params)
   const note = await prisma.message.findFirst({
     where:{
@@ -14,9 +14,7 @@ export async function GET(params: Params) {
   }) 
   return NextResponse.json(note)
 }
-export async function DELETE({params}: Params) {
-    return NextResponse.json(params)
-    console.log(Number(params.id))
+export async function DELETE(request: Request,{params}: Params) {
    try {
      const deletedNote = await prisma.message.delete({
          where: {
