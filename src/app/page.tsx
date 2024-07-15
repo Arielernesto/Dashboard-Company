@@ -1,12 +1,16 @@
-import Image from "next/image";
+
 import { ChatOptions } from "@/components/chat-options";
 import { Chat } from "@/components/chat";
+// import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+// const queryClient = new QueryClient()
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    // <QueryClientProvider client={queryClient}>
+    <main className="flex min-h-screen flex-col items-center justify-between p-4 pt-10">
       <Chat></Chat>
      <ChatOptions></ChatOptions>
     </main>
+    // </QueryClientProvider>
   );
 }
