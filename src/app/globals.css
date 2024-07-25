@@ -1,7 +1,9 @@
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
-
+  html, body, :root{
+    height: 100%;
+  }
   @layer base {
     :root {
       --background: 0 0% 100%;
@@ -29,6 +31,8 @@
       --chart-3: 197 37% 24%;
       --chart-4: 43 74% 66%;
       --chart-5: 27 87% 67%;
+      --fc-list-event-dot-width: 10px;
+      --fc-list-event-hover-bg-color: 122.2 54% 2.9% !important;
     }
 
     .dark {
@@ -68,7 +72,33 @@
     }
   }
 
+.calendar-container .fc .fc-button-primary{
+  background-color: black;
+}
+.calendar-container .fc .fc-button-primary:not(:disabled).fc-button-active{
+  background-color: #2e2e2e;
+}
 
-body{
-  background-color: #ccc;
+.fc .fc-multimonth-singlecol .fc-multimonth-header {
+  --background: 222.2 84% 4.9% !important;
+
+}
+.fc .fc-list-sticky .fc-list-day > *{
+  background: transparent !important;
+  --background: 222.2 84% 4.9% !important;
+}
+.fc .fc-cell-shaded, .fc .fc-day-disabled {
+   background: transparent !important; 
+}
+.fc .fc-multimonth-singlecol .fc-multimonth-header{
+    background: transparent !important;
+}
+.fc .fc-multimonth-daygrid{
+  background: transparent !important;
+  --background: 222.2 84% 4.9% !important;
+}
+@media (max-width: 768px) {
+  .calendar-container .fc .fc-toolbar {
+    display: block;
+  }
 }
