@@ -40,7 +40,7 @@ interface Data  {
   cif: String,
   profileImage: String
 }
-export default function FormCreateCustomer(props: FormCreateProps) {
+export default function FormCreateCompany(props: FormCreateProps) {
   const { setOpenModalCreate } = props
   const router = useRouter()
 //   const [photoUploaded, setPhotoUploaded] = useState<ChangeEvent<HTMLInputElement>>()

@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -10,27 +9,27 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { useState } from "react"
-import FormCreateCompany from "./FormCreateCompany"
+import FormCreateCustomer from "./FormCreateCustomer"
 
-export default function HeaderCompanies() {
+export default function HeaderCustomers() {
   const [openModalCreate, setOpenModalCreate] = useState(false)
 
   return (
     <div className="flex justify-between items-center">
-      <h2 className="text-2xl">List of Companies</h2>
+      <h2 className="text-2xl">List of Customers</h2>
       <Dialog open={openModalCreate} onOpenChange={setOpenModalCreate}>
         <DialogTrigger asChild>
-          <Button>Create Company</Button>
+          <Button>Create Customer</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[625px]">
-        <DialogTitle>Create Company</DialogTitle>
+        <DialogTitle>Create Customer</DialogTitle>
           <DialogHeader>
             <DialogDescription>
-              Create and configure your Company
+              Create and configure your customer
             </DialogDescription>
           </DialogHeader>
 
-          <FormCreateCompany setOpenModalCreate={setOpenModalCreate}/>
+          <FormCreateCustomer setOpenModalCreate={setOpenModalCreate}/>
         </DialogContent>
       </Dialog>
     </div>

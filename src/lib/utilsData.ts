@@ -1,9 +1,15 @@
+import { prisma } from './prisma'
+const totalCompanies = async () => {
+    const total = (await prisma.company.findMany()).length
+    
+    return total
+}
 
 import { BookOpenCheck, UsersRound, Waypoints } from 'lucide-react'
 export const CardSummaryData = [
     {
         icon: UsersRound,
-        total: "12.450",
+        total:  totalCompanies(),
         average: 15,
         title: "Companies created",
         tooltipText: "See all of the companies created"

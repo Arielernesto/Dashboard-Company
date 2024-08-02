@@ -8,6 +8,7 @@ export default async function AnalyticsPage() {
         }
     })
     const events = await prisma.event.findMany({
+        
         orderBy: {
             createdAt: "desc"
         }

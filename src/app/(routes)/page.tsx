@@ -1,4 +1,3 @@
-"use client"
 import LastCustomers from "@/components/LastCustomers";
 import { CardSummary } from "@/components/CardSummary";
 
@@ -16,7 +15,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-x-20">
         {
           CardSummaryData.map(({icon, total, average,title, tooltipText}) => (
-<CardSummary key={title} icon={icon}
+  <CardSummary key={title} icon={icon}
         total={total}
         average={average}
         title={title}

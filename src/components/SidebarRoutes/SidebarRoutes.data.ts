@@ -2,8 +2,7 @@ import {
     BarChart4,
     Building2,
     PanelsTopLeft,
-    Settings,
-    ShieldCheck,
+    UsersRound,
     CircleHelpIcon,
     Calendar
 } from 'lucide-react'
@@ -18,6 +17,11 @@ export const dataGeneralSidebar = [
         icon: Building2,
         label: "Companies",
         href: '/companies'
+    },
+    {
+        icon: UsersRound,
+        label: "Customers",
+        href: '/customers'
     },
     {
         icon: Calendar,
