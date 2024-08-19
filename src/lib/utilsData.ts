@@ -4,6 +4,7 @@ const totalCompanies = async () => {
     
     return total
 }
+      
 
 import { BookOpenCheck, UsersRound, Waypoints } from 'lucide-react'
 export const CardSummaryData = [

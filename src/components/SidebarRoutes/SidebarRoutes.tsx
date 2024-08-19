@@ -2,7 +2,6 @@
 import { dataGeneralSidebar, dataToolsSidebar} from "./SidebarRoutes.data"
 import SidebarItem from "../SidebarItem/SidebarItem"
 import { Separator } from "../ui/separator"
-import { Button } from "../ui/button"
 
 
 export default function SidebarRoutes() {

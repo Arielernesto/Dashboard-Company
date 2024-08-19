@@ -19,3 +19,8 @@ export async function POST(request: Request) {
     return NextResponse.json(error, {status: 500})
    }
 }
+
+export async function GET(request: Request){
+   const customers = await prisma.customer.findMany()
+   return NextResponse.json(customers, {status: 200})
+}

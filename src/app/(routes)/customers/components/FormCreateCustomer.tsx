@@ -2,6 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useSession } from "next-auth/react"
 
 // UI
 import { Button } from '@/components/ui/button'
@@ -36,6 +37,8 @@ interface Data  {
     expire: String
 }
 export default function FormCreateCustomer(props: FormCreateProps) {
+  const {data: session, status} = useSession()
+  console.log({session, status})
   const { setOpenModalCreate } = props
   const router = useRouter()
 //   const [photoUploaded, setPhotoUploaded] = useState<ChangeEvent<HTMLInputElement>>()

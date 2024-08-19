@@ -82,6 +82,11 @@ model Customer {
   expire String
   status String @default("0")
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id String @id @default(uuid())
+  name String?
+  email String @unique
+  password String
 }
