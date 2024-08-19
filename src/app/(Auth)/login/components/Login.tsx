@@ -49,6 +49,9 @@ export default function Login() {
         if (login?.error) {
             console.log(login.error)
         }
+        else{
+          router.push("/")
+        }
     }
   return (
     <Form {...form}>
