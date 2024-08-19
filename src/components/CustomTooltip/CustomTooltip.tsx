@@ -1,4 +1,4 @@
-import { CustomTooltip } from "./CustomTooltip.types";
+import { type CustomTooltip } from "./CustomTooltip.types";
 import {
     Tooltip,
     TooltipContent,

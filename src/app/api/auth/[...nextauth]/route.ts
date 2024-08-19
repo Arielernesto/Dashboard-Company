@@ -12,14 +12,14 @@ const handler = NextAuth({
                 email: { label: "Email", type: "email"},
                 password: { label: "Password", type: "password"}
             },
-            async authorize (credentials, req) {
+            async authorize (credentials: any, req) {
                 const user = await prisma.user.findFirst({
                     where: {
                         email: credentials?.email
                     }
                 })
 
-                if (user && bcrypt.compareSync(credentials?.password, user.password)) {
+                if (user && bcrypt.compareSync( credentials.password, user.password)) {
                     return user
                 } else {
                     return null
