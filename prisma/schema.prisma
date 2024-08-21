@@ -76,6 +76,7 @@ model Event {
 
 model Customer {
   id String @id @default(uuid())
+  userId String
   name String
   email String
   amount String
@@ -86,7 +87,8 @@ model Customer {
 
 model User {
   id String @id @default(uuid())
-  name String?
+  name String
   email String @unique
   password String
+  profile_photo String?
 }

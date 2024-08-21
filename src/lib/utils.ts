@@ -12,6 +12,10 @@ export const formatPrice = (price: number) => {
   }).format(price)
 }
 
+export function nameFromURL(url: string){
+  const parts = url.split('/');
+  return parts[parts.length - 1]
+}
 
 export function formatDate(date: Date) {
   const months = [

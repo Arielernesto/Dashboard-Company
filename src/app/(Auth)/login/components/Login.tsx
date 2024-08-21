@@ -27,7 +27,6 @@ const formSchema = z.object({
 
 export default function Login() {
     const {data: session, status} = useSession()
-    console.log({session, status})
     const router = useRouter()
   //   const [photoUploaded, setPhotoUploaded] = useState<ChangeEvent<HTMLInputElement>>()
     
@@ -42,21 +41,22 @@ export default function Login() {
   
     async function onSubmit(values: z.infer<typeof formSchema>){
         const login = await signIn("credentials", {
-            redirect: true,
+            redirect: false,
             email: values.email,
             password: values.password
         })
         if (login?.error) {
-            console.log(login.error)
+            toast({title: "Login Failed", variant: "destructive"})
         }
         else{
-          router.push("/")
+          router.replace("/")
         }
     }
   return (
     <Form {...form}>
-    <h2 className="text-center font-bold text-xl">Login</h2>
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full" >
+  
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full  p-6 bg-[#fafcfb] dark:bg-secondary rounded-lg md:mt-20 mt-5" >
+        <h2 className="text-center font-bold text-xl">Login</h2>
         <div className=''>
       
 

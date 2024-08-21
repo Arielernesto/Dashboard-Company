@@ -79,7 +79,6 @@ export default function CompanyForm(props: CompanyFormProps) {
     toast({title: "Company Updated!", variant: "default"})
   }
   catch (error) {
-    console.log(error)
     toast({title: "Error", variant: "destructive"})
   }
 }

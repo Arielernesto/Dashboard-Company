@@ -48,7 +48,6 @@ export default function CustomerForm(props: CompanyFormProps) {
     toast({title: "Customer Updated!", variant: "default"})
   }
   catch (error) {
-    console.log(error)
     toast({title: "Error", variant: "destructive"})
   }
 }

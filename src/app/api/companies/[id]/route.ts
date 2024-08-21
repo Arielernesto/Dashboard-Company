@@ -3,6 +3,10 @@ import { NextResponse } from "next/server";
 import fs from "fs"
 import { writeFile } from 'fs/promises'
 import { join } from "path";
+import { UTApi } from 'uploadthing/server'
+import { nameFromURL } from "@/lib/utils";
+
+const uploadthing = new UTApi()
 
 export async function PUT(request: Request, {params}: {params: {id: string}}){
     
@@ -12,20 +16,14 @@ export async function PUT(request: Request, {params}: {params: {id: string}}){
      fields.forEach((value, key) => {
       data[key] = value
      })
-     console.log(data)
-     let pathname
+     let pathname : any
      if (data.file !== '') {
-            const relativePath = join(process.cwd(), 'public', data.image)
-            fs.unlinkSync(relativePath)
-            const bytes = await data.file.arrayBuffer()
-            const buffer = Buffer.from(bytes)
-            const path = join(process.cwd(), 'public/upload', data.file.name)
-            await writeFile(path, buffer)
-            pathname = `/upload/${data.file.name}`
+        const nameFile = nameFromURL(data.image) 
+        const deleteFile = await uploadthing.deleteFiles(nameFile)
+        const response : any = await uploadthing.uploadFiles(data.file)
+        pathname = response.data?.url
      } else {
-        console.log("process")
         pathname = data.image
-        console.log({ok: "si", pathname})
      }
      const company = await prisma.company.update({
          where: {
@@ -56,8 +54,8 @@ export async function DELETE(request: Request, {params}: {params: {id: string}})
                 id: id
             }
         })
-        const relativePath = join(process.cwd(), 'public', company.profileImage)
-        fs.unlinkSync(relativePath)
+        const nameFile = nameFromURL(company.profileImage) 
+        const response = await uploadthing.deleteFiles(nameFile)
         return NextResponse.json(company, {status: 200})
     } catch (error) {
         return NextResponse.json([error, "Ha ocurrido un error"], {status: 500})
